@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.mokoResources)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -51,6 +52,10 @@ kotlin {
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(libs.preference.core)
+            implementation(libs.preference.coroutines)
+            implementation(libs.preference.serialization)
+            implementation(libs.kotlinx.serialization)
 
         }
         desktopMain.dependencies {

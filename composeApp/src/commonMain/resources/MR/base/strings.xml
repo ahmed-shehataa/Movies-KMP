@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="network_error">Network Error</string>
+    <string name="retry">Retry</string>
+    <string name="empty_lbl"></string>
+    <string name="empty_field">Empty field</string>
+    <string name="invalid_email">Invaild Email</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="are_you_sure_to_logout">Are you sure to logout?</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_all_fav">Delete all favourite</string>
+    <string name="are_you_sure_to_delete_all_favourite">Are you sure to delete all favourite?</string>
+    <string name="delete">Delete</string>
+</resources>

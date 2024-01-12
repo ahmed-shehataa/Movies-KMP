@@ -66,6 +66,8 @@ kotlin {
 
 dependencies {
     commonMainApi(libs.moko.resources)
+    commonMainApi(libs.moko.mvvm)
+    commonMainApi(libs.moko.flow)
 }
 
 

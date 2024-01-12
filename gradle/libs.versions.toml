@@ -12,9 +12,11 @@ compose-compiler = "1.5.6"
 compose-plugin = "1.5.11"
 kotlin = "1.9.21"
 moko-res = "0.23.0"
+moko-mvvm = "0.16.1"
 preference = "1.1.1"
 kotlinx-serialization = "1.6.2"
 plugin-serialization = "1.9.21"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -26,11 +28,15 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
-moko-resources  = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-res" }
 preference-core = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "preference"}
 preference-serialization = { module = "com.russhwolf:multiplatform-settings-serialization", version.ref = "preference"}
 preference-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "preference"}
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization"}
+
+# moko
+moko-resources  = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-res" }
+moko-mvvm = { module = "dev.icerock.moko:mvvm-compose", version.ref = "moko-mvvm" }
+moko-flow = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "moko-mvvm" }
 
 
 [plugins]

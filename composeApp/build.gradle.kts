@@ -42,6 +42,7 @@ kotlin {
             dependencies {
                 implementation(libs.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
+                implementation(libs.koin.android)
             }
         }
 
@@ -56,8 +57,12 @@ kotlin {
             implementation(libs.preference.coroutines)
             implementation(libs.preference.serialization)
             implementation(libs.kotlinx.serialization)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.napier)
 
         }
+
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
         }
@@ -68,6 +73,8 @@ dependencies {
     commonMainApi(libs.moko.resources)
     commonMainApi(libs.moko.mvvm)
     commonMainApi(libs.moko.flow)
+    commonMainApi(libs.moko.core)
+
 }
 
 
@@ -76,9 +83,11 @@ android {
     namespace = myNamespace
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets["main"].apply {
+        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        res.srcDirs("src/androidMain/resources")
+        resources.srcDirs("src/commonMain/resources")
+    }
 
     defaultConfig {
         applicationId = "com.shehata.movies_kmp"

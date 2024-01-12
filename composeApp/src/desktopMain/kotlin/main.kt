@@ -1,17 +1,16 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import app.App
+import com.shehata.movies_kmp.App
+import com.shehata.movies_kmp.di.PlatformModule
+import com.shehata.movies_kmp.di.commonModule
+import org.koin.core.context.startKoin
 
 fun main() = application {
+
+    startKoin {
+        modules(PlatformModule().module + commonModule)
+    }
     Window(onCloseRequest = ::exitApplication, title = "Movies-KMP") {
         App()
     }
-}
-
-@Preview
-@Composable
-fun AppDesktopPreview() {
-    App()
 }

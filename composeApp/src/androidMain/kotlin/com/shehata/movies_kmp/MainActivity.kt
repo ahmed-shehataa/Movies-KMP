@@ -1,6 +1,5 @@
 package com.shehata.movies_kmp
 
-import app.App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

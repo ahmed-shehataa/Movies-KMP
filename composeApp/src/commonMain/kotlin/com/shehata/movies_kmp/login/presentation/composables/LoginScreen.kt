@@ -1,72 +1,69 @@
 package com.shehata.movies_kmp.login.presentation.composables
 
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import com.shehata.movies_kmp.login.presentation.contract.LoginAction
+import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.viewModel.LoginViewModel
-import com.shehata.movies_kmp.util.validation.InputWrapper
+import com.shehata.movies_kmp.util.compose.collectAsEffect
+import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = koinInject()) {
+fun LoginScreen(
+    snackBarHostState: SnackbarHostState,
+    viewModel: LoginViewModel = koinInject()
+) {
+    /**
+     * ui states
+     */
+    val scope = rememberCoroutineScope()
     val keyboardController = LocalSoftwareKeyboardController.current
+    val uiState = remember { viewModel.uiState.value }
+    val emailField = remember { uiState.email }
+    val passwordField = remember { uiState.password }
+    val isLoading = remember { uiState.isLoading }
 
-    /*  val viewStates = remember {
-          viewModel.viewStates ?: LoginViewState()
-      }
+    val isButtonEnabled by remember(emailField.text, passwordField.text) {
+        derivedStateOf {
+            emailField.isValid.value && passwordField.isValid.value
+        }
+    }
 
-
-      val email = remember {
-          viewStates.email
-      }
-
-      val password = remember {
-          viewStates.password
-      }
-
-      val isLoading = remember {
-          viewStates.isLoading
-      }
-
-      val isButtonEnabled by remember(email.text, password.text) {
-          derivedStateOf {
-              email.isValid.value && password.isValid.value
-          }
-      }*/
-
-    /*val onLoginClicked = remember {
+    val onLoginClicked = remember {
         {
             keyboardController?.hide()
-            viewModel.setEvent(
-                LoginEvent.OnLoginClicked
-            )
+            viewModel.setIntent(LoginIntent.OnLoginClicked)
         }
-    }*/
+    }
 
 
-    val loading = viewModel.isLoading.collectAsState()
     LoginScreenContent(
-        isLoading = loading.value,
-        email = InputWrapper(),
-        password = InputWrapper(),
-        isButtonEnabled = true,
-        onLoginClicked = {
-            viewModel.onLoginClicked()
-        }
+        isLoading = isLoading.value,
+        email = emailField,
+        password = passwordField,
+        isButtonEnabled = isButtonEnabled,
+        onLoginClicked = onLoginClicked
     )
 
-    /*GeneralObservers<LoginState, LoginViewModel>(viewModel = viewModel) {
+    /**
+     * Navigation
+     */
+    viewModel.uiAction.collectAsEffect {
         when (it) {
-            LoginState.OpenRecipesScreen -> {
-                navigator?.navigate(RecipesScreenDestination, navOptions = navOptions {
-                    popUpTo(LoginScreenDestination.route) {
-                        inclusive = true
-                    }
-                })
+            LoginAction.OpenHomeScreen -> {
+                scope.launch {
+                    snackBarHostState.showSnackbar("OpenHomeScreen")
+                }
             }
         }
+    }
 
-    }*/
 }

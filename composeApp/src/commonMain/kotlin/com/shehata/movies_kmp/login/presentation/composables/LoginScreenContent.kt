@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -40,6 +41,8 @@ fun LoginScreenContent(
     onLoginClicked: () -> Unit,
     isLoading: Boolean
 ) {
+
+    val focusManager = LocalFocusManager.current
 
     Box {
 
@@ -78,8 +81,8 @@ fun LoginScreenContent(
                 keyboardType = KeyboardType.Password,
                 imeAction = ImeAction.Done,
                 onDone = {
-                    /* if (isButtonEnabled)
-                         onLoginClicked()*/
+                    if (isButtonEnabled)
+                        onLoginClicked()
                 }
             )
 
@@ -88,6 +91,7 @@ fun LoginScreenContent(
                     .requiredHeight(50.dp)
                     .fillMaxWidth(),
                 onClick = {
+                    focusManager.clearFocus()
                     onLoginClicked()
                 },
                 content = {

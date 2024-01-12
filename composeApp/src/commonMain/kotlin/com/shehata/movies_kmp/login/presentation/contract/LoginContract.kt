@@ -6,9 +6,17 @@ import com.shehata.movies_kmp.util.validation.InputWrapper
 import com.shehata.movies_kmp.util.validation.ValidationType
 
 
-data class LoginViewState(
-    val isRefreshing: MutableState<Boolean> = mutableStateOf(false),
+data class LoginUiState(
+    val isLoading: MutableState<Boolean> = mutableStateOf(false),
     val isNetworkError: MutableState<Boolean> = mutableStateOf(false),
     val email: InputWrapper = InputWrapper(validationType = ValidationType.Email),
     val password: InputWrapper = InputWrapper(validationType = ValidationType.Password),
 )
+
+sealed interface LoginIntent {
+    object OnLoginClicked : LoginIntent
+}
+
+sealed interface LoginAction {
+    object OpenHomeScreen : LoginAction
+}

@@ -35,6 +35,10 @@ kotlin {
     sourceSets {
         val desktopMain by getting {
             dependsOn(commonMain.get())
+            dependencies {
+                implementation(compose.desktop.currentOs)
+
+            }
         }
 
         val androidMain by getting {
@@ -60,11 +64,8 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.napier)
+            implementation(libs.kotlinx.coroutines.core)
 
-        }
-
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
         }
     }
 }

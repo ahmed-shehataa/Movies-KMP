@@ -101,6 +101,8 @@ fun LoginScreenContent(
                 shape = MaterialTheme.shapes.medium
             )
 
+            Spacer(Modifier.padding(bottom = 20.dp))
+
         }
 
         if (isLoading) {

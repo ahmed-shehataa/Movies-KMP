@@ -15,8 +15,8 @@ import com.shehata.movies_kmp.base.collectActions
 import com.shehata.movies_kmp.login.presentation.contract.LoginAction
 import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.screenModel.LoginScreenModel
+import com.shehata.movies_kmp.movies.MoviesScreen
 import com.shehata.movies_kmp.util.compose.LocalSnackBar
-import kotlinx.coroutines.launch
 
 
 object LoginScreen : Screen {
@@ -62,9 +62,10 @@ object LoginScreen : Screen {
         screenModel.collectActions {
             when (it) {
                 LoginAction.OpenHomeScreen -> {
-                    scope.launch {
+                    navigator.push(MoviesScreen)
+                    /*scope.launch {
                         snackBar.showSnackbar("OpenHomeScreen")
-                    }
+                    }*/
                 }
             }
         }

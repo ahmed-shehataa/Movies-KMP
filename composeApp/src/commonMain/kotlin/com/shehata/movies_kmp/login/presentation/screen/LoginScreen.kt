@@ -11,11 +11,11 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.shehata.movies_kmp.base.collectActions
 import com.shehata.movies_kmp.login.presentation.contract.LoginAction
 import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.screenModel.LoginScreenModel
 import com.shehata.movies_kmp.util.compose.LocalSnackBar
-import com.shehata.movies_kmp.util.compose.collectAsEffect
 import kotlinx.coroutines.launch
 
 
@@ -59,7 +59,7 @@ object LoginScreen : Screen {
         )
 
         // Navigation observe
-        screenModel.uiAction.collectAsEffect {
+        screenModel.collectActions {
             when (it) {
                 LoginAction.OpenHomeScreen -> {
                     scope.launch {

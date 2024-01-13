@@ -20,7 +20,7 @@ koin = "3.5.3"
 koin-compose = "1.1.2"
 napier = "2.7.1"
 kotlinx-coroutines = "1.7.3"
-
+voyager = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -39,9 +39,6 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 
 # moko
 moko-resources  = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-res" }
-moko-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "moko-mvvm" }
-moko-mvvm = { module = "dev.icerock.moko:mvvm-compose", version.ref = "moko-mvvm" }
-moko-flow = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "moko-mvvm" }
 
 # Koin
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
@@ -53,7 +50,14 @@ napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 
 # Coroutines
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+
+# voyager
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+
 
 
 [plugins]

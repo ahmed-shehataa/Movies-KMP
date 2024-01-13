@@ -1,29 +1,37 @@
 package com.shehata.movies_kmp
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.SnackbarHost
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import com.shehata.movies_kmp.login.presentation.composables.LoginScreen
-import io.github.aakira.napier.DebugAntilog
-import io.github.aakira.napier.Napier
+import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.navigator.Navigator
+import com.shehata.movies_kmp.login.presentation.screen.LoginScreen
+import com.shehata.movies_kmp.util.compose.LocalSnackBar
+import com.shehata.movies_kmp.util.logging.initNapier
+
 
 @Composable
 fun App() {
-    // TODO CALL IT JUST ONE TIME
-    Napier.base(DebugAntilog())
+    // Setup
+    initNapier()
 
-    MaterialTheme {
+    // Navigation
+    Navigator(LoginScreen) { navigator ->
         val snackBarHostState = remember { SnackbarHostState() }
-        Scaffold(
-            snackbarHost = {
-                SnackbarHost(hostState = snackBarHostState)
-            },
-        ) { contentPadding ->
-            LoginScreen(snackBarHostState)
+        CompositionLocalProvider( values = arrayOf(
+            LocalSnackBar provides snackBarHostState
+        )) {
+            Scaffold(
+                topBar = { /* ... */ },
+                content = { CurrentScreen() },
+                bottomBar = { /* ... */ },
+                snackbarHost = {
+                    SnackbarHost(hostState = snackBarHostState)
+                },
+            )
         }
-
     }
 }

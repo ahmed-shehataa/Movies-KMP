@@ -36,7 +36,9 @@ kotlin {
         val desktopMain by getting {
             dependsOn(commonMain.get())
             dependencies {
+                implementation(compose.desktop.common)
                 implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
 
             }
         }
@@ -65,19 +67,18 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.napier)
             implementation(libs.kotlinx.coroutines.core)
-
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.screenModel)
+            implementation(libs.voyager.koin)
+            implementation(libs.voyager.transitions)
+            implementation(libs.moko.resources)
         }
     }
 }
 
 dependencies {
-    commonMainApi(libs.moko.resources)
-    commonMainApi(libs.moko.mvvm)
-    commonMainApi(libs.moko.flow)
-    commonMainApi(libs.moko.core)
 
 }
-
 
 val myNamespace = "com.shehata.movies_kmp"
 android {
@@ -134,4 +135,5 @@ multiplatformResources {
     multiplatformResourcesVisibility = MRVisibility.Internal // optional, default Public
     iosBaseLocalizationRegion = "en" // optional, default "en"
     multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
+    disableStaticFrameworkWarning = true
 }

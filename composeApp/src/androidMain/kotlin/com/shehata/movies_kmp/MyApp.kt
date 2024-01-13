@@ -2,7 +2,6 @@ package com.shehata.movies_kmp
 
 import android.app.Application
 import com.russhwolf.settings.BuildConfig
-import com.shehata.movies_kmp.di.PlatformModule
 import com.shehata.movies_kmp.di.commonModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -17,7 +16,7 @@ class MyApp : Application() {
         startKoin {
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@MyApp)
-            modules(PlatformModule().module + commonModule)
+            modules(commonModule)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.shehata.movies_kmp.login.presentation.composables
+package com.shehata.movies_kmp.login.presentation.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

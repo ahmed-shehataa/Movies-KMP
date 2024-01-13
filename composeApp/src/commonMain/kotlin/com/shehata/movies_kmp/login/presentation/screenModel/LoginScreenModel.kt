@@ -1,11 +1,12 @@
-package com.shehata.movies_kmp.login.presentation.viewModel
+package com.shehata.movies_kmp.login.presentation.screenModel
 
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.shehata.movies_kmp.login.data.model.LoginModel
 import com.shehata.movies_kmp.login.domain.LoginByEmailUseCase
 import com.shehata.movies_kmp.login.presentation.contract.LoginAction
 import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.contract.LoginUiState
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,9 +15,9 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-class LoginViewModel constructor(
+class LoginScreenModel(
     private val loginByEmailUseCase: LoginByEmailUseCase
-) : ViewModel() {
+) : ScreenModel {
 
     /**
      * TODO MOVE them to BaseViewModel
@@ -37,7 +38,7 @@ class LoginViewModel constructor(
      * TODO to handle desktop dispatcher error
      */
     private fun handleIntents() {
-        viewModelScope.launch(/*Dispatchers.IO*/) {
+        screenModelScope.launch(/*Dispatchers.IO*/) {
             _uiIntent.collectLatest {
                 Napier.i(tag = "_uiIntent:", message = "handleIntents")
                 when (it) {
@@ -48,7 +49,7 @@ class LoginViewModel constructor(
     }
 
     fun setIntent(uiIntent: LoginIntent) {
-        viewModelScope.launch { _uiIntent.emit(uiIntent) }
+        screenModelScope.launch { _uiIntent.emit(uiIntent) }
     }
 
     init {
@@ -60,7 +61,7 @@ class LoginViewModel constructor(
      */
 
     private fun onLoginClicked() {
-        viewModelScope.launch {
+        screenModelScope.launch {
             _uiState.value.isLoading.value = true
             val email = _uiState.value.email.text.value
             val password = _uiState.value.password.text.value

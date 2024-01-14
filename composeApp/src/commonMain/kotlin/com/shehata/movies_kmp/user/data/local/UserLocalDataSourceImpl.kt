@@ -8,14 +8,14 @@ import com.russhwolf.settings.coroutines.toSuspendSettings
 import com.russhwolf.settings.serialization.decodeValueOrNull
 import com.russhwolf.settings.serialization.encodeValue
 import com.shehata.movies_kmp.user.data.model.UserDataModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.serialization.ExperimentalSerializationApi
 
-/**
- * TODO change toSuspendSettings Dispatchers
- */
+
 @OptIn(ExperimentalSettingsApi::class, ExperimentalSerializationApi::class)
 class UserLocalDataSourceImpl(
-    private val settings: SuspendSettings = Settings().toSuspendSettings(/*Dispatchers.IO*/)
+    private val settings: SuspendSettings = Settings().toSuspendSettings(Dispatchers.IO)
 ) : UserLocalDataSource {
 
     companion object {

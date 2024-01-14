@@ -62,10 +62,7 @@ object LoginScreen : Screen {
         screenModel.collectActions {
             when (it) {
                 LoginAction.OpenHomeScreen -> {
-                    navigator.push(MoviesScreen)
-                    /*scope.launch {
-                        snackBar.showSnackbar("OpenHomeScreen")
-                    }*/
+                    navigator.replace(MoviesScreen)
                 }
             }
         }

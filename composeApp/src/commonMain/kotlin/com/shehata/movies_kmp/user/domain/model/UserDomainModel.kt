@@ -1,6 +1,6 @@
-package com.shehata.movies_kmp.login.data.model
+package com.shehata.movies_kmp.user.domain.model
 
-data class LoginResponse(
+data class UserDomainModel(
     val id: String,
     val name: String,
     val email: String,

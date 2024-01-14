@@ -1,32 +1,31 @@
-package com.shehata.movies_kmp.splash
+package com.shehata.movies_kmp.splash.presentation.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.shehata.movies_kmp.Resources
+import com.shehata.movies_kmp.base.collectActions
 import com.shehata.movies_kmp.login.presentation.screen.LoginScreen
+import com.shehata.movies_kmp.movies.MoviesScreen
+import com.shehata.movies_kmp.splash.presentation.contract.SplashAction
+import com.shehata.movies_kmp.splash.presentation.screenModel.SplashScreenModel
 import dev.icerock.moko.resources.compose.painterResource
-import kotlinx.coroutines.delay
 
 object SplashScreen : Screen {
     @Composable
     override fun Content() {
 
         val navigator = LocalNavigator.currentOrThrow
-
-        LaunchedEffect(Unit) {
-            delay(1500)
-            navigator.push(LoginScreen)
-        }
+        val screenModel = getScreenModel<SplashScreenModel>()
 
         Box(Modifier.fillMaxSize()) {
             Image(
@@ -36,6 +35,13 @@ object SplashScreen : Screen {
                 painter = painterResource(Resources.images.splash),
                 contentDescription = null
             )
+        }
+
+        screenModel.collectActions {
+            when (it) {
+                SplashAction.OpenMoviesScreen -> navigator.replace(MoviesScreen)
+                SplashAction.OpenLoginScreen -> navigator.replace(LoginScreen)
+            }
         }
 
     }

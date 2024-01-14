@@ -14,7 +14,6 @@ abstract class BaseScreenModel<UIState, UIIntent, UIAction> : ScreenModel {
     val uiState: StateFlow<UIState> = _uiState
 
     private val _uiIntent: MutableSharedFlow<UIIntent> = MutableSharedFlow()
-    val uiIntent: MutableSharedFlow<UIIntent> = _uiIntent
 
     private val _uiAction: MutableSharedFlow<UIAction> = MutableSharedFlow()
     val uiAction: MutableSharedFlow<UIAction> = _uiAction

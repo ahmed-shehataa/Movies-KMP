@@ -6,10 +6,10 @@ import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.core.screen.Screen
 
 @Composable
-fun MyScaffold() {
+fun MyScaffold(screen: Screen) {
     val snackBarHostState = remember { SnackbarHostState() }
     CompositionLocalProvider(
         values = arrayOf(
@@ -18,7 +18,7 @@ fun MyScaffold() {
     ) {
         Scaffold(
             topBar = {  /*...*/ },
-            content = { CurrentScreen() },
+            content = { screen.Content() },
             bottomBar = {  /*...*/ },
             snackbarHost = {
                 SnackbarHost(hostState = snackBarHostState)

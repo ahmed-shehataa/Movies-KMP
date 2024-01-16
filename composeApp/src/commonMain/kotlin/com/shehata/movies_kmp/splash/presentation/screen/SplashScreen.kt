@@ -11,7 +11,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.base.BaseScreen
 import com.shehata.movies_kmp.login.presentation.screen.LoginScreen
-import com.shehata.movies_kmp.movies.MoviesScreen
+import com.shehata.movies_kmp.movies.presentation.screen.MoviesScreen
 import com.shehata.movies_kmp.splash.presentation.contract.SplashAction
 import com.shehata.movies_kmp.splash.presentation.screenModel.SplashScreenModel
 import dev.icerock.moko.resources.compose.painterResource

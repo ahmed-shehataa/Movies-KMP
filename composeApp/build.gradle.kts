@@ -1,6 +1,10 @@
+
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.icerock.gradle.MRVisibility
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
+val myNamespace = "com.shehata.movies_kmp"
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,7 +12,17 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.mokoResources)
     alias(libs.plugins.serialization)
+    alias(libs.plugins.buildkonfig)
 }
+
+buildkonfig {
+    packageName = myNamespace
+    defaultConfigs {
+        buildConfigField(STRING, "BASE_API_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField(STRING, "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/\"")
+    }
+}
+
 
 kotlin {
     androidTarget {
@@ -49,6 +63,7 @@ kotlin {
                 implementation(libs.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.koin.android)
+                implementation(libs.kotlinx.coroutines.android)
             }
         }
 
@@ -64,6 +79,7 @@ kotlin {
             implementation(libs.preference.serialization)
             implementation(libs.kotlinx.serialization)
             implementation(libs.koin.core)
+            implementation(libs.koin.ktor)
             implementation(libs.koin.compose)
             implementation(libs.napier)
             implementation(libs.kotlinx.coroutines.core)
@@ -72,6 +88,7 @@ kotlin {
             implementation(libs.voyager.koin)
             implementation(libs.voyager.transitions)
             implementation(libs.moko.resources)
+            implementation(libs.ktor.client.core)
         }
     }
 }
@@ -80,7 +97,6 @@ dependencies {
 
 }
 
-val myNamespace = "com.shehata.movies_kmp"
 android {
     namespace = myNamespace
     compileSdk = libs.versions.android.compileSdk.get().toInt()

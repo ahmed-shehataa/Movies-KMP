@@ -13,9 +13,12 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.shehata.movies_kmp.util.compose.LocalSnackBar
+import kotlin.jvm.Transient
 
 open class BaseScreen<UIState, UIIntent, UIAction>(
+    @Transient
     private val model: @Composable Screen.() -> BaseScreenModel<UIState, UIIntent, UIAction>,
+    @Transient
     private val content: @Composable (
         screenModel: BaseScreenModel<UIState, UIIntent, UIAction>,
         uiState: UIState,
@@ -25,6 +28,7 @@ open class BaseScreen<UIState, UIIntent, UIAction>(
             Text(modifier = Modifier.align(Alignment.Center), text = "BaseScreen")
         }
     },
+    @Transient
     private val onAction: (action: UIAction, navigator: Navigator) -> Unit = { _, _ ->
     }
 ) : Screen {

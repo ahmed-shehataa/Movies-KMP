@@ -2,6 +2,7 @@ package com.shehata.movies_kmp
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.ScaleTransition
 import com.shehata.movies_kmp.splash.presentation.screen.SplashScreen
 import com.shehata.movies_kmp.util.compose.MyScaffold
 import com.shehata.movies_kmp.util.logging.initNapier
@@ -11,7 +12,9 @@ import com.shehata.movies_kmp.util.logging.initNapier
 fun App() {
     initNapier()
 
-    Navigator(SplashScreen) {
-        MyScaffold()
+    Navigator(SplashScreen) { navigator ->
+        ScaleTransition(navigator) { screen ->
+            MyScaffold(screen)
+        }
     }
 }

@@ -11,7 +11,7 @@ import com.shehata.movies_kmp.login.presentation.contract.LoginAction
 import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.contract.LoginUiState
 import com.shehata.movies_kmp.login.presentation.screenModel.LoginScreenModel
-import com.shehata.movies_kmp.movies.MoviesScreen
+import com.shehata.movies_kmp.movies.presentation.screen.MoviesScreen
 
 
 @OptIn(ExperimentalComposeUiApi::class)

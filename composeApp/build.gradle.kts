@@ -1,4 +1,3 @@
-
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.icerock.gradle.MRVisibility
 import org.jetbrains.compose.ExperimentalComposeLibrary
@@ -18,8 +17,8 @@ plugins {
 buildkonfig {
     packageName = myNamespace
     defaultConfigs {
-        buildConfigField(STRING, "BASE_API_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField(STRING, "BASE_IMAGE_URL", "\"https://image.tmdb.org/t/p/\"")
+        buildConfigField(STRING, "BASE_API_URL", "https://api.themoviedb.org/3/")
+        buildConfigField(STRING, "BASE_IMAGE_URL", "https://image.tmdb.org/t/p/")
     }
 }
 
@@ -32,9 +31,9 @@ kotlin {
             }
         }
     }
-    
+
     jvm("desktop")
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -45,7 +44,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         val desktopMain by getting {
             dependsOn(commonMain.get())
@@ -79,7 +78,6 @@ kotlin {
             implementation(libs.preference.serialization)
             implementation(libs.kotlinx.serialization)
             implementation(libs.koin.core)
-            implementation(libs.koin.ktor)
             implementation(libs.koin.compose)
             implementation(libs.napier)
             implementation(libs.kotlinx.coroutines.core)
@@ -89,6 +87,13 @@ kotlin {
             implementation(libs.voyager.transitions)
             implementation(libs.moko.resources)
             implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.ktor.client.cio)
+            implementation(libs.ktor.client.serialization)
+            implementation(libs.ktor.client.negotiation)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network)
         }
     }
 }

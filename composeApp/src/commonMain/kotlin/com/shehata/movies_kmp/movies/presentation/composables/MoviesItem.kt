@@ -1,13 +1,12 @@
 package com.shehata.movies_kmp.movies.presentation.composables
 
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,27 +14,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import coil3.compose.LocalPlatformContext
+import coil3.request.ImageRequest
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 
 @Composable
 fun MoviesItem(
     modifier: Modifier,
     movie: MovieUIModel,
-    isSelected: Boolean,
     onMovieClicked: (MovieUIModel) -> Unit
 ) {
-
-    val scaleAnimated = animateFloatAsState(targetValue = if (isSelected) 1f else .9f)
-
     Box(
         modifier = modifier
-            .scale(scaleAnimated.value)
             .clip(MaterialTheme.shapes.large)
             .clickable {
                 onMovieClicked(movie)
@@ -43,12 +39,14 @@ fun MoviesItem(
             .background(Color.LightGray),
     ) {
 
-        /*AsyncImage(
-            modifier = Modifier.fillMaxSize(),
+        AsyncImage(
             contentScale = ContentScale.Crop,
-            model = movie.posterUrl,
+            model = ImageRequest.Builder(LocalPlatformContext.current)
+                .data(movie.posterUrl)
+                .build(),
             contentDescription = null,
-        )*/
+            modifier = Modifier.height(200.dp),
+        )
 
         Column(
             modifier = Modifier
@@ -76,11 +74,11 @@ fun MoviesItem(
             )
         }
 
-        /*VoteBadge(
+        VoteBadge(
             Modifier
                 .align(Alignment.TopEnd)
                 .padding(top = 12.dp, end = 12.dp), movie
-        )*/
+        )
 
     }
 

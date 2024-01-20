@@ -11,8 +11,8 @@ class MoviesRepositoryImpl(
 ) : MoviesRepository {
 
 
-    override suspend fun getMovies(): List<MovieDomainModel> {
-        return remote.getMovies().map { it.toDomainModel() }
+    override suspend fun getMovies(page: Int, pageSize: Int): List<MovieDomainModel> {
+        return remote.getMovies(page, pageSize).map { it.toDomainModel() }
     }
 
 

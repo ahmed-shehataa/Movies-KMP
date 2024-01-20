@@ -20,7 +20,10 @@ class MoviesScreenModel(
 
     private fun getMovies() {
         screenModelScope.launch {
-            val movies = getMoviesListUseCase.execute().map { it.toUIModel() }
+            val movies = getMoviesListUseCase.execute(
+                page = 1,
+                pageSize = 20
+            ).map { it.toUIModel() }
             getUiState().moviesList.addAll(movies)
         }
     }

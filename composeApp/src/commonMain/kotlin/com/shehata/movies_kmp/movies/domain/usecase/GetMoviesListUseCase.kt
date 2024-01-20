@@ -7,7 +7,7 @@ class GetMoviesListUseCase (
     private val repository: MoviesRepository
 ) {
 
-    suspend fun execute(): List<MovieDomainModel> {
-        return repository.getMovies()
+    suspend fun execute(page: Int, pageSize: Int): List<MovieDomainModel> {
+        return repository.getMovies(page, pageSize)
     }
 }

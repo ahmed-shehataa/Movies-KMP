@@ -1,4 +1,4 @@
-package com.shehata.movies_kmp.base
+package com.shehata.movies_kmp.base.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.shehata.movies_kmp.base.observe.collectActions
+import com.shehata.movies_kmp.base.screenModel.BaseScreenModel
 import com.shehata.movies_kmp.util.compose.LocalSnackBar
 import kotlin.jvm.Transient
 

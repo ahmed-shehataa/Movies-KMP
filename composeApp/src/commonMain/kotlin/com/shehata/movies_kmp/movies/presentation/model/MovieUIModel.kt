@@ -1,6 +1,7 @@
 package com.shehata.movies_kmp.movies.presentation.model
 
 import com.shehata.movies_kmp.BuildKonfig
+import com.shehata.movies_kmp.base.pagination.PaginatedItem
 
 
 data class MovieUIModel(
@@ -21,4 +22,6 @@ data class MovieUIModel(
     val posterUrl: String = BuildKonfig.BASE_IMAGE_URL + "w500/" + posterPath,
     val backdropUrl: String = BuildKonfig.BASE_IMAGE_URL + "w500/" + backdropPath,
     val voteRate: VoteRate = VoteRate.getRate(voteAverage ?: 0.0)
-)
+) : PaginatedItem {
+    override fun getId(): Int = id ?: -1
+}

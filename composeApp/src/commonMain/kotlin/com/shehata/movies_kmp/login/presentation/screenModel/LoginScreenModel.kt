@@ -1,7 +1,7 @@
 package com.shehata.movies_kmp.login.presentation.screenModel
 
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.shehata.movies_kmp.base.BaseScreenModel
+import com.shehata.movies_kmp.base.screenModel.BaseScreenModel
 import com.shehata.movies_kmp.login.data.model.LoginModel
 import com.shehata.movies_kmp.login.domain.usecase.LoginByEmailUseCase
 import com.shehata.movies_kmp.login.presentation.contract.LoginAction

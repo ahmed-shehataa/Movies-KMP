@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.getScreenModel
 import com.shehata.movies_kmp.Resources
-import com.shehata.movies_kmp.base.BaseScreen
+import com.shehata.movies_kmp.base.screen.BaseScreen
 import com.shehata.movies_kmp.login.presentation.screen.LoginScreen
 import com.shehata.movies_kmp.movies.presentation.screen.MoviesScreen
 import com.shehata.movies_kmp.splash.presentation.contract.SplashAction

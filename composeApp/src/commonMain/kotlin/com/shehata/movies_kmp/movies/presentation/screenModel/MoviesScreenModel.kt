@@ -1,17 +1,16 @@
 package com.shehata.movies_kmp.movies.presentation.screenModel
 
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.shehata.movies_kmp.base.BaseScreenModel
-import com.shehata.movies_kmp.movies.domain.usecase.GetMoviesListUseCase
+import com.shehata.movies_kmp.base.screenModel.BaseScreenModel
 import com.shehata.movies_kmp.movies.presentation.contract.MoviesAction
 import com.shehata.movies_kmp.movies.presentation.contract.MoviesIntent
 import com.shehata.movies_kmp.movies.presentation.contract.MoviesUIState
-import com.shehata.movies_kmp.movies.presentation.mapper.toUIModel
+import com.shehata.movies_kmp.movies.presentation.paging.MoviesPagingSource
 import kotlinx.coroutines.launch
 
 
 class MoviesScreenModel(
-    private val getMoviesListUseCase: GetMoviesListUseCase
+    val moviesPagingSource: MoviesPagingSource
 ) : BaseScreenModel<MoviesUIState, MoviesIntent, MoviesAction>() {
 
     init {
@@ -20,11 +19,12 @@ class MoviesScreenModel(
 
     private fun getMovies() {
         screenModelScope.launch {
-            val movies = getMoviesListUseCase.execute(
+            /*val movies = getMoviesListUseCase.execute(
                 page = 1,
                 pageSize = 20
             ).map { it.toUIModel() }
             getUiState().moviesList.addAll(movies)
+            getUiState().moviesSliderList.addAll(movies.shuffled().take(5))*/
         }
     }
 

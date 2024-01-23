@@ -1,7 +1,8 @@
-package com.shehata.movies_kmp.base
+package com.shehata.movies_kmp.base.observe
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import com.shehata.movies_kmp.base.screenModel.BaseScreenModel
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

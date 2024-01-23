@@ -7,6 +7,7 @@ import com.shehata.movies_kmp.movies.data.remote.MoviesRemoteDataSourceImpl
 import com.shehata.movies_kmp.movies.data.repository.MoviesRepositoryImpl
 import com.shehata.movies_kmp.movies.domain.repository.MoviesRepository
 import com.shehata.movies_kmp.movies.domain.usecase.GetMoviesListUseCase
+import com.shehata.movies_kmp.movies.presentation.paging.MoviesPagingSource
 import com.shehata.movies_kmp.movies.presentation.screenModel.MoviesScreenModel
 import org.koin.dsl.module
 
@@ -22,5 +23,6 @@ val moviesModule = module {
     factory { GetMoviesListUseCase(get()) }
 
     // ui
+    factory { MoviesPagingSource(get()) }
     factory { MoviesScreenModel(get()) }
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 import com.shehata.movies_kmp.movies.presentation.model.VoteRate
+import kotlin.math.round
 
 @Composable
 fun VoteBadge(
@@ -38,8 +39,9 @@ fun VoteBadge(
             .background(color)
             .padding(8.dp), contentAlignment = Alignment.Center
     ) {
+
         Text(
-            text = (movie.voteAverage ?: 0).toString(),
+            text = (round(movie.voteAverage ?: 0.0)).toString(),
             fontSize = 18.sp,
             color = Color.White,
             maxLines = 1,

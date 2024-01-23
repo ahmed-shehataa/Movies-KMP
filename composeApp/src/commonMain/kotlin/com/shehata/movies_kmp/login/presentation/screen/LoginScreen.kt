@@ -6,7 +6,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import cafe.adriel.voyager.koin.getScreenModel
-import com.shehata.movies_kmp.base.BaseScreen
+import com.shehata.movies_kmp.base.screen.BaseScreen
 import com.shehata.movies_kmp.login.presentation.contract.LoginAction
 import com.shehata.movies_kmp.login.presentation.contract.LoginIntent
 import com.shehata.movies_kmp.login.presentation.contract.LoginUiState

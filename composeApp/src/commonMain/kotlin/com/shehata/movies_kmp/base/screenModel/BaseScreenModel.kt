@@ -1,4 +1,4 @@
-package com.shehata.movies_kmp.base
+package com.shehata.movies_kmp.base.screenModel
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope

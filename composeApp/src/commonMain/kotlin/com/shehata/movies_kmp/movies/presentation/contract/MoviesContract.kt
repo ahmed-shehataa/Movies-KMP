@@ -11,6 +11,7 @@ data class MoviesUIState(
     val isRefreshing: MutableState<Boolean> = mutableStateOf(false),
     //val networkError: MutableState<NetworkError?> = mutableStateOf(null),
     val moviesList: SnapshotStateList<MovieUIModel> = mutableStateListOf(),
+    val moviesSliderList: SnapshotStateList<MovieUIModel> = mutableStateListOf(),
 )
 
 sealed class MoviesIntent {

@@ -1,7 +1,7 @@
 package com.shehata.movies_kmp.splash.presentation.screenModel
 
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.shehata.movies_kmp.base.BaseScreenModel
+import com.shehata.movies_kmp.base.screenModel.BaseScreenModel
 import com.shehata.movies_kmp.splash.presentation.contract.SplashAction
 import com.shehata.movies_kmp.user.domain.usecase.IsUserLoggedInUseCase
 import kotlinx.coroutines.delay

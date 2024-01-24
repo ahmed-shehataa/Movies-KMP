@@ -32,7 +32,7 @@ fun MoviesItem(
 ) {
     Box(
         modifier = modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(MaterialTheme.shapes.medium)
             .clickable {
                 onMovieClicked(movie)
             }

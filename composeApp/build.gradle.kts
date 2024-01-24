@@ -118,7 +118,6 @@ kotlin {
             implementation(libs.ktor.logging)
             implementation(libs.coil.compose)
             implementation(libs.coil.network)
-            implementation(libs.sqlDelight.runtime)
             implementation(libs.sqlDelight.coroutines)
 
         }

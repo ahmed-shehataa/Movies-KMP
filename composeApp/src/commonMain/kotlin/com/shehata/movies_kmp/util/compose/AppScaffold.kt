@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import cafe.adriel.voyager.core.screen.Screen
 
 @Composable
-fun MyScaffold(screen: Screen) {
+fun AppScaffold(screen: Screen) {
     val snackBarHostState = remember { SnackbarHostState() }
     CompositionLocalProvider(
         values = arrayOf(

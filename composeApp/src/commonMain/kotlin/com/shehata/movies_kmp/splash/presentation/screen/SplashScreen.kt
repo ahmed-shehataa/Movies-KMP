@@ -18,7 +18,7 @@ import dev.icerock.moko.resources.compose.painterResource
 
 object SplashScreen : BaseScreen<Any, Any, SplashAction>(
     model = { getScreenModel<SplashScreenModel>() },
-    content = { screenModel, uiState, snackBar ->
+    content = { screenModel, uiState, snackBar, navigator ->
         Box(Modifier.fillMaxSize()) {
             Image(
                 modifier = Modifier

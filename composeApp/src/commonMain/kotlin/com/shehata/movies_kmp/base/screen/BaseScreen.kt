@@ -24,15 +24,16 @@ open class BaseScreen<UIState, UIIntent, UIAction>(
     private val content: @Composable (
         screenModel: BaseScreenModel<UIState, UIIntent, UIAction>,
         uiState: UIState,
-        snackBar: SnackbarHostState
-    ) -> Unit = { _, _, _ ->
+        snackBar: SnackbarHostState,
+        navigator: Navigator,
+    ) -> Unit = { _, _, _,_ ->
         Box(Modifier.fillMaxSize()) {
             Text(modifier = Modifier.align(Alignment.Center), text = "BaseScreen")
         }
     },
     @Transient
     private val onAction: (action: UIAction, navigator: Navigator) -> Unit = { _, _ ->
-    }
+    },
 ) : Screen {
 
     @Composable
@@ -44,7 +45,7 @@ open class BaseScreen<UIState, UIIntent, UIAction>(
         val navigator = LocalNavigator.currentOrThrow
 
         // content
-        content(sm, uiState, snackBar)
+        content(sm, uiState, snackBar, navigator)
 
         // Action
         sm.collectActions {

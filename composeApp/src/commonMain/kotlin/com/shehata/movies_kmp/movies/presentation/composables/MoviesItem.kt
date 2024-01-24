@@ -28,7 +28,7 @@ import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 fun MoviesItem(
     modifier: Modifier,
     movie: MovieUIModel,
-    onMovieClicked: (MovieUIModel) -> Unit
+    onMovieClicked: (MovieUIModel) -> Unit,
 ) {
     Box(
         modifier = modifier

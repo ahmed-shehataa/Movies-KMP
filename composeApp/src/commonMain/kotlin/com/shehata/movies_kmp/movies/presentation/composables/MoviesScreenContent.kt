@@ -21,7 +21,6 @@ fun MoviesScreenContent(
     pagingSource: ComposePagingSource<MovieUIModel>,
     moviesSliderList: List<MovieUIModel>,
     onMovieClicked: (MovieUIModel) -> Unit,
-    onTryAgain: () -> Unit,
 ) {
 
 

@@ -16,18 +16,9 @@ object MoviesScreen : BaseScreen<MoviesUIState, MoviesIntent, MoviesAction>(
     content = { screenModel, uiState, snackBar, navigator ->
         val moviesSliderList = remember { uiState.moviesSliderList }
 
-        val onRefresh = remember {
-            {
-                screenModel.setIntent(MoviesIntent.RefreshScreen)
-            }
-        }
-
         MoviesScreenContent(
             pagingSource = (screenModel as MoviesScreenModel).moviesPagingSource,
             moviesSliderList = moviesSliderList,
-            onTryAgain = {
-                onRefresh()
-            },
             onMovieClicked = {
                 navigator.push(MovieDetailsScreen(it))
             }

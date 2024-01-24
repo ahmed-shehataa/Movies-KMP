@@ -4,7 +4,7 @@ import com.shehata.movies_kmp.BuildKonfig
 import com.shehata.movies_kmp.base.pagination.PaginatedItem
 
 
-data class MovieUIModel(
+data class  MovieUIModel(
     val adult: Boolean?,
     val backdropPath: String?,
     val genreIds: List<Int?>?,

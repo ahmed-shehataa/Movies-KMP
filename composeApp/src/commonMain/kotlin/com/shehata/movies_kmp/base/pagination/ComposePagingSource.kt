@@ -44,7 +44,7 @@ abstract class ComposePagingSource<T>(private val pagingSetup: PagingSetup = Pag
     }
     private val coroutineScope = CoroutineScope(Dispatchers.IO + exceptionHandler + SupervisorJob())
 
-    var onNewPageLoaded: (List<T>) -> Unit = {}
+    var onFirstPageLoaded: (List<T>) -> Unit = {}
 
     init {
         loadNextPage()
@@ -81,13 +81,15 @@ abstract class ComposePagingSource<T>(private val pagingSetup: PagingSetup = Pag
 
             val result = loadPage(page = currentPage, perPage = pagingSetup.pageSize)
             withContext(Dispatchers.Unconfined) {
+                if (currentPage == FIRST_PAGE_NUMBER)
+                    onFirstPageLoaded(result)
+
                 _list.addAll(
                     result
                 )
                 _state.value = if (result.isEmpty() || result.size < pagingSetup.pageSize)
                     PagingState.REACHED_LAST_PAGE
                 else {
-                    onNewPageLoaded(result)
                     PagingState.IDLE
                 }
             }

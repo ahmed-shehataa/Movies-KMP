@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 
 class MoviesScreenModel(
-    val moviesPagingSource: MoviesPagingSource
+    val moviesPagingSource: MoviesPagingSource,
 ) : BaseScreenModel<MoviesUIState, MoviesIntent, MoviesAction>() {
 
     init {
@@ -19,20 +19,18 @@ class MoviesScreenModel(
 
     private fun getMovies() {
         screenModelScope.launch {
-            /*val movies = getMoviesListUseCase.execute(
-                page = 1,
-                pageSize = 20
-            ).map { it.toUIModel() }
-            getUiState().moviesList.addAll(movies)
-            getUiState().moviesSliderList.addAll(movies.shuffled().take(5))*/
+            moviesPagingSource.onFirstPageLoaded = { movies ->
+                getUiState().moviesSliderList.clear()
+                getUiState().moviesSliderList.addAll(movies.shuffled().take(5))
+            }
         }
     }
 
     override fun createInitialState(): MoviesUIState = MoviesUIState()
     override suspend fun handleIntent(uiIntent: MoviesIntent) {
         when (uiIntent) {
-            MoviesIntent.RefreshScreen -> {
-
+            is MoviesIntent.OnMovieClicked -> {
+                emitAction(MoviesAction.OpenMovieDetailsScreen(uiIntent.movieUIModel))
             }
         }
     }

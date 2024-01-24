@@ -13,14 +13,14 @@ import com.shehata.movies_kmp.movies.presentation.screenModel.MoviesScreenModel
 
 object MoviesScreen : BaseScreen<MoviesUIState, MoviesIntent, MoviesAction>(
     model = { getScreenModel<MoviesScreenModel>() },
-    content = { screenModel, uiState, snackBar, navigator ->
+    content = { screenModel, uiState, snackBar ->
         val moviesSliderList = remember { uiState.moviesSliderList }
 
         MoviesScreenContent(
             pagingSource = (screenModel as MoviesScreenModel).moviesPagingSource,
             moviesSliderList = moviesSliderList,
             onMovieClicked = {
-                navigator.push(MovieDetailsScreen(it))
+               screenModel.setIntent(MoviesIntent.OnMovieClicked(it))
             }
         )
 
@@ -28,8 +28,8 @@ object MoviesScreen : BaseScreen<MoviesUIState, MoviesIntent, MoviesAction>(
 
     onAction = { action, navigator ->
         when (action) {
-            MoviesAction.OpenMovieDetailsScreen -> {
-
+            is MoviesAction.OpenMovieDetailsScreen -> {
+                navigator.push(MovieDetailsScreen(action.movieUIModel))
             }
         }
     }

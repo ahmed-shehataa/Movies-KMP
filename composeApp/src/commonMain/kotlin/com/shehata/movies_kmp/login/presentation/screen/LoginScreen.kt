@@ -17,7 +17,7 @@ import com.shehata.movies_kmp.movies.presentation.screen.MoviesScreen
 @OptIn(ExperimentalComposeUiApi::class)
 object LoginScreen : BaseScreen<LoginUiState, LoginIntent, LoginAction>(
     model = { getScreenModel<LoginScreenModel>() },
-    content = { screenModel, uiState, snackBar, navigator ->
+    content = { screenModel, uiState, snackBar ->
 
         val keyboardController = LocalSoftwareKeyboardController.current
         val emailField = remember { uiState.email }

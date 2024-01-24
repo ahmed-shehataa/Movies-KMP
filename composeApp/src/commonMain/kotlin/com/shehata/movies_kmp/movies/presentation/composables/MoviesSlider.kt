@@ -7,14 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -37,7 +32,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun MoviesSlider(
     movies: List<MovieUIModel>,
-    onMovieClicked: (MovieUIModel) -> Unit
+    onMovieClicked: (MovieUIModel) -> Unit,
 ) {
     if (movies.isEmpty())
         return
@@ -72,7 +67,7 @@ fun MoviesSlider(
         ) { page ->
             val movie = movies[page]
 
-            MoviesSliderItem(
+            MovieSliderItem(
                 movie = movie,
                 onMovieClicked = onMovieClicked
             )
@@ -97,25 +92,7 @@ fun MoviesSlider(
                     ),
                 )
 
-            Row(
-                Modifier
-                    .wrapContentHeight()
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                repeat(pagerState.pageCount) { iteration ->
-                    val color = if (pagerState.currentPage == iteration)
-                        Color.LightGray else Color.DarkGray
-                    Box(
-                        modifier = Modifier
-                            .padding(2.dp)
-                            .clip(CircleShape)
-                            .background(color)
-                            .size(12.dp)
-                    )
-                }
-            }
+            SliderDots(count = pagerState.pageCount, currentPage = pagerState.currentPage)
         }
 
     }

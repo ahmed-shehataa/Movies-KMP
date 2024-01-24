@@ -25,8 +25,7 @@ open class BaseScreen<UIState, UIIntent, UIAction>(
         screenModel: BaseScreenModel<UIState, UIIntent, UIAction>,
         uiState: UIState,
         snackBar: SnackbarHostState,
-        navigator: Navigator,
-    ) -> Unit = { _, _, _,_ ->
+    ) -> Unit = { _, _, _->
         Box(Modifier.fillMaxSize()) {
             Text(modifier = Modifier.align(Alignment.Center), text = "BaseScreen")
         }
@@ -45,7 +44,7 @@ open class BaseScreen<UIState, UIIntent, UIAction>(
         val navigator = LocalNavigator.currentOrThrow
 
         // content
-        content(sm, uiState, snackBar, navigator)
+        content(sm, uiState, snackBar)
 
         // Action
         sm.collectActions {

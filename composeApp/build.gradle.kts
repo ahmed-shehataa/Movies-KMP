@@ -119,6 +119,8 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network)
             implementation(libs.sqlDelight.coroutines)
+            implementation(libs.compose.window.size)
+
 
         }
     }

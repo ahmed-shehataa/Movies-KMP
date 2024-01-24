@@ -5,8 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -45,7 +45,7 @@ fun MoviesItem(
                 .data(movie.posterUrl)
                 .build(),
             contentDescription = null,
-            modifier = Modifier.height(200.dp),
+            modifier = Modifier.fillMaxSize(),
         )
 
         Column(

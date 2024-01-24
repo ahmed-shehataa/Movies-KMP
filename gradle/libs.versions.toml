@@ -24,10 +24,12 @@ voyager = "1.0.0"
 ktor = "2.3.5"
 coil = "3.0.0-alpha02"
 sqlDelight = "2.0.0"
+window-size = "0.3.2"
 
 
 
 [libraries]
+compose-window-size = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "window-size" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }

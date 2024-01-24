@@ -134,7 +134,8 @@ fun <T : PaginatedItem> PaginatedLazyGrid(
                 // list items
                 items(
                     items = composePagingSource.list,
-                    key = { item: PaginatedItem -> item.getId() }) {
+                    key = { item: PaginatedItem -> item.getId() }
+                ) {
                     item(it)
                 }
 

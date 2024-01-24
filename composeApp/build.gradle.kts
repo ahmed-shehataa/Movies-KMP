@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.mokoResources)
     alias(libs.plugins.serialization)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.sqlDelight)
 }
 
 buildkonfig {
@@ -22,6 +23,13 @@ buildkonfig {
     }
 }
 
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set(myNamespace)
+        }
+    }
+}
 
 kotlin {
     androidTarget {
@@ -45,13 +53,15 @@ kotlin {
         }
     }
 
+
     sourceSets {
         val desktopMain by getting {
             dependsOn(commonMain.get())
             dependencies {
                 implementation(compose.desktop.common)
                 implementation(compose.desktop.currentOs)
-                implementation(libs.kotlinx.coroutines.swing)
+                implementation(libs.coroutines.swing)
+                implementation(libs.sqlDelight.jvm)
 
             }
         }
@@ -62,7 +72,22 @@ kotlin {
                 implementation(libs.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.koin.android)
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
+                implementation(libs.sqlDelight.android)
+            }
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain.get())
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(libs.ktor.darwin)
+                implementation(libs.sqlDelight.native)
             }
         }
 
@@ -80,26 +105,24 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.napier)
-            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.coroutines.core)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.screenModel)
             implementation(libs.voyager.koin)
             implementation(libs.voyager.transitions)
             implementation(libs.moko.resources)
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.okhttp)
-            implementation(libs.ktor.client.cio)
-            implementation(libs.ktor.client.serialization)
-            implementation(libs.ktor.client.negotiation)
-            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.cio)
+            implementation(libs.ktor.serialization)
+            implementation(libs.ktor.negotiation)
+            implementation(libs.ktor.logging)
             implementation(libs.coil.compose)
             implementation(libs.coil.network)
+            implementation(libs.sqlDelight.runtime)
+            implementation(libs.sqlDelight.coroutines)
+
         }
     }
-}
-
-dependencies {
-
 }
 
 android {
@@ -113,7 +136,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.shehata.movies_kmp"
+        applicationId = myNamespace
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -144,7 +167,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.shehata.movies_kmp"
+            packageName = myNamespace
             packageVersion = "1.0.0"
         }
     }

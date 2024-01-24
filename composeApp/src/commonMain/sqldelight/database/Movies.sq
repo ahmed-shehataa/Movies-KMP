@@ -1,0 +1,45 @@
+import kotlin.Boolean;
+
+CREATE TABLE Movies (
+    id INTEGER NOT NULL PRIMARY KEY DEFAULT CURRENT_TIME ,
+        adult INTEGER AS Boolean DEFAULT NULL ,
+        backdropPath TEXT,
+        genreIds TEXT DEFAULT NULL,
+        originalLanguage TEXT,
+        originalTitle TEXT,
+        overview TEXT,
+        popularity REAL,
+        posterPath TEXT,
+        releaseDate TEXT,
+        title TEXT,
+        video INTEGER AS Boolean DEFAULT NULL,
+        voteAverage REAL,
+        voteCount INTEGER
+);
+
+getMovies:
+SELECT *
+FROM Movies
+LIMIT :size
+OFFSET (:page - 1) * :size;
+
+
+insertMovie:
+    INSERT OR REPLACE INTO Movies (
+        adult,
+        backdropPath,
+        genreIds,
+        originalLanguage,
+        originalTitle,
+        overview,
+        popularity,
+        posterPath,
+        releaseDate,
+        title,
+        video,
+        voteAverage,
+        voteCount
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+clearMovies:
+DELETE FROM Movies;

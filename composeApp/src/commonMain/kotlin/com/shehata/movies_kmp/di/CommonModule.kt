@@ -9,6 +9,7 @@ import org.koin.dsl.module
 
 val commonModule = module {
     includes(
+        platformModule,
         singletonModule,
         userModule,
         loginModule,

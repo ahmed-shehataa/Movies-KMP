@@ -7,6 +7,6 @@ expect class DriverFactory {
     fun create(): SqlDriver
 }
 
-fun createDatabase(driverFactory: DriverFactory): AppDatabase {
+fun getAppDatabase(driverFactory: DriverFactory): AppDatabase {
     return AppDatabase(driverFactory.create())
 }

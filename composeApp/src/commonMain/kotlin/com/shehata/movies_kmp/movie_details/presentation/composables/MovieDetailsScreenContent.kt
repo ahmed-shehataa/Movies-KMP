@@ -1,12 +1,15 @@
 package com.shehata.movies_kmp.movie_details.presentation.composables
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,7 +26,7 @@ import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 @Composable
 fun MovieDetailsScreenContent(
     movie: MovieUIModel,
-    onBackClicked: () -> Unit
+    onBackClicked: () -> Unit,
 ) {
 
     Box(
@@ -35,7 +38,11 @@ fun MovieDetailsScreenContent(
         LazyColumn {
             item {
                 AsyncImage(
-                    modifier = Modifier.fillParentMaxHeight(fraction = 0.5f),
+                    modifier = Modifier
+                        .defaultMinSize(minHeight = 20.dp)
+                        .fillParentMaxWidth()
+                        .wrapContentHeight()
+                        .animateContentSize(),
                     contentScale = ContentScale.Crop,
                     model = movie.backdropUrl,
                     contentDescription = null,

@@ -19,7 +19,9 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,6 +31,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.util.compose.InputText
+import com.shehata.movies_kmp.util.compose.LocalWindowSize
 import com.shehata.movies_kmp.util.validation.InputWrapper
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -39,16 +42,29 @@ fun LoginScreenContent(
     password: InputWrapper,
     isButtonEnabled: Boolean,
     onLoginClicked: () -> Unit,
-    isLoading: Boolean
+    isLoading: Boolean,
 ) {
 
     val focusManager = LocalFocusManager.current
 
-    Box {
+    val windowSize = LocalWindowSize.current
+
+    val widthFraction = remember {
+        when (windowSize) {
+            WindowWidthSizeClass.Compact -> {
+                1f
+            }
+
+            else -> {
+                0.5f
+            }
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxWidth(widthFraction)
                 .background(Color.White)
                 .padding(horizontal = 20.dp)
                 .verticalScroll(rememberScrollState()),

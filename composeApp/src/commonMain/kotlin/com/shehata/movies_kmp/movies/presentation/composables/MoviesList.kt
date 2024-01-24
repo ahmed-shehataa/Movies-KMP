@@ -1,5 +1,6 @@
 package com.shehata.movies_kmp.movies.presentation.composables
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,7 +38,7 @@ fun MoviesList(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         item = { movie ->
             MoviesItem(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().animateContentSize(),
                 movie = movie,
                 onMovieClicked = onMovieClicked
             )

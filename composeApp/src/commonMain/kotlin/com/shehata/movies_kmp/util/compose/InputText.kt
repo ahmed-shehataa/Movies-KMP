@@ -9,7 +9,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
@@ -51,7 +50,7 @@ fun InputText(
     inputWrapper: InputWrapper,
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Next,
-    onDone: () -> Unit
+    onDone: () -> Unit,
 ) {
 
     val focusManager = LocalFocusManager.current
@@ -95,7 +94,6 @@ fun InputText(
 
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .requiredHeight(50.dp)
                 .clip(MaterialTheme.shapes.medium)
                 .border(

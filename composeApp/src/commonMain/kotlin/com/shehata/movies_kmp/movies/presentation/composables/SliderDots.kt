@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.shehata.movies_kmp.util.compose.LocalDimen
 
 @Composable
 fun SliderDots(count: Int, currentPage: Int) {
@@ -21,7 +22,7 @@ fun SliderDots(count: Int, currentPage: Int) {
         Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .padding(bottom = 8.dp),
+            .padding(bottom = LocalDimen.current.spaceSmall),
         horizontalArrangement = Arrangement.Center
     ) {
         repeat(count) { iteration ->
@@ -29,7 +30,7 @@ fun SliderDots(count: Int, currentPage: Int) {
                 Color.LightGray else Color.DarkGray
             Box(
                 modifier = Modifier
-                    .padding(2.dp)
+                    .padding(LocalDimen.current.spaceXXXSmall)
                     .clip(CircleShape)
                     .background(color)
                     .size(12.dp)

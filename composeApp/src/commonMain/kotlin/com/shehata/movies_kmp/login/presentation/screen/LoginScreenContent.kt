@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.util.compose.InputText
+import com.shehata.movies_kmp.util.compose.LocalDimen
 import com.shehata.movies_kmp.util.compose.LocalWindowSize
 import com.shehata.movies_kmp.util.validation.InputWrapper
 import dev.icerock.moko.resources.compose.painterResource
@@ -66,13 +67,13 @@ fun LoginScreenContent(
         Column(
             modifier = Modifier.fillMaxWidth(widthFraction)
                 .background(Color.White)
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = LocalDimen.current.spaceXXXLarge)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(LocalDimen.current.spaceLarge),
         ) {
 
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(LocalDimen.current.spaceXXXLarge))
 
             Image(
                 modifier = Modifier
@@ -117,7 +118,7 @@ fun LoginScreenContent(
                 shape = MaterialTheme.shapes.medium
             )
 
-            Spacer(Modifier.padding(bottom = 20.dp))
+            Spacer(Modifier.padding(bottom = LocalDimen.current.spaceXXXLarge))
 
         }
 

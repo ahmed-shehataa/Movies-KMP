@@ -23,9 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
+import com.shehata.movies_kmp.util.compose.LocalDimen
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -76,8 +76,8 @@ fun MoviesSlider(
         Column(
             Modifier.align(Alignment.BottomCenter)
                 .background(Color.Black.copy(alpha = .5f))
-                .padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+                .padding(LocalDimen.current.spaceLarge),
+            verticalArrangement = Arrangement.spacedBy(LocalDimen.current.spaceSmall),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 

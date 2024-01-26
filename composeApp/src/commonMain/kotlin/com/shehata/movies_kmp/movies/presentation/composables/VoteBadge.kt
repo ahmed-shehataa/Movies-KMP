@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 import com.shehata.movies_kmp.movies.presentation.model.VoteRate
+import com.shehata.movies_kmp.util.compose.LocalDimen
 import kotlin.math.round
 
 @Composable
@@ -37,7 +37,7 @@ fun VoteBadge(
         modifier = modifier
             .clip(CircleShape)
             .background(color)
-            .padding(8.dp), contentAlignment = Alignment.Center
+            .padding(LocalDimen.current.spaceSmall), contentAlignment = Alignment.Center
     ) {
 
         Text(

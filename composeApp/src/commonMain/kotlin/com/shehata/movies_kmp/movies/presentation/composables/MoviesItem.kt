@@ -17,12 +17,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
+import com.shehata.movies_kmp.util.compose.LocalDimen
 
 @Composable
 fun MoviesItem(
@@ -53,8 +53,8 @@ fun MoviesItem(
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
                 .background(Color.Black.copy(alpha = .5f))
-                .padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+                .padding(LocalDimen.current.spaceLarge),
+            verticalArrangement = Arrangement.spacedBy(LocalDimen.current.spaceXXSmall)
         ) {
 
             Text(
@@ -77,7 +77,7 @@ fun MoviesItem(
         VoteBadge(
             Modifier
                 .align(Alignment.TopEnd)
-                .padding(top = 12.dp, end = 12.dp), movie
+                .padding(top = LocalDimen.current.spaceLarge, end = LocalDimen.current.spaceLarge), movie
         )
 
     }

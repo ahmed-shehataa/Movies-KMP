@@ -16,11 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.movies.presentation.composables.VoteBadge
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
+import com.shehata.movies_kmp.util.compose.LocalDimen
 
 
 @Composable
@@ -39,7 +39,7 @@ fun MovieDetailsScreenContent(
             item {
                 AsyncImage(
                     modifier = Modifier
-                        .defaultMinSize(minHeight = 20.dp)
+                        .defaultMinSize(minHeight = LocalDimen.current.spaceXXXLarge)
                         .fillParentMaxWidth()
                         .wrapContentHeight()
                         .animateContentSize(),
@@ -49,7 +49,7 @@ fun MovieDetailsScreenContent(
                 )
             }
 
-            item { Spacer(modifier = Modifier.height(12.dp)) }
+            item { Spacer(modifier = Modifier.height(LocalDimen.current.spaceLarge)) }
 
             item {
                 movie.title?.let {
@@ -60,7 +60,7 @@ fun MovieDetailsScreenContent(
                 }
             }
 
-            item { Spacer(modifier = Modifier.height(12.dp)) }
+            item { Spacer(modifier = Modifier.height(LocalDimen.current.spaceLarge)) }
 
             item {
                 movie.overview?.let {
@@ -71,7 +71,7 @@ fun MovieDetailsScreenContent(
                 }
             }
 
-            item { Spacer(modifier = Modifier.height(12.dp)) }
+            item { Spacer(modifier = Modifier.height(LocalDimen.current.spaceLarge)) }
 
             item {
                 movie.releaseDate?.let {
@@ -88,7 +88,7 @@ fun MovieDetailsScreenContent(
             Modifier
                 .align(Alignment.TopStart)
                 .statusBarsPadding()
-                .padding(start = 12.dp, top = 12.dp)
+                .padding(start = LocalDimen.current.spaceLarge, top = LocalDimen.current.spaceLarge)
 
         )
 
@@ -96,7 +96,8 @@ fun MovieDetailsScreenContent(
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .statusBarsPadding()
-                .padding(end = 12.dp, top = 12.dp), movie = movie
+                .padding(end = LocalDimen.current.spaceLarge, top = LocalDimen.current.spaceLarge),
+            movie = movie
 
         )
     }

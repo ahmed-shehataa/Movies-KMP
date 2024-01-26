@@ -8,11 +8,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.base.pagination.ComposePagingSource
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
+import com.shehata.movies_kmp.util.compose.LocalDimen
 import dev.icerock.moko.resources.compose.stringResource
 
 
@@ -31,7 +31,7 @@ fun MoviesScreenContent(
                 Text(
                     text = stringResource(Resources.strings.movies),
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(horizontal = LocalDimen.current.spaceXXLarge)
                 )
             }
         }

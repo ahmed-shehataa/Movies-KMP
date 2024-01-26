@@ -4,6 +4,7 @@
 ## Compose Multiplatform AWESOME :partying_face: :partying_face: :partying_face:
 <p align="center">
   <img src="img/1.png">
+  <img src="img/2.png">
 </p>
 
 

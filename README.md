@@ -1,4 +1,4 @@
-## Kotlin Multiplatform project targets Android, iOS, Desktop and Web.
+## Kotlin Multiplatform project targets Android, iOS and Desktop.
 ### Note: The iOS version is not ready yet because I don't have MAC :ghost:
 
 ## Compose Multiplatform AWESOME :partying_face: :partying_face: :partying_face:
@@ -18,7 +18,7 @@
 - [Coil3](https://coil-kt.github.io/coil/upgrading_to_coil3) for loading images.
 - [Voyager](https://voyager.adriel.cafe) for easily handling navigation on all platforms.
 - [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings) for saving key-value pairs.
-- [MOKO resources](https://github.com/icerockdev/moko-resources) Access shared resources (like images, fonts, and strings) on all platforms.
+- [Moko resources](https://github.com/icerockdev/moko-resources) Access shared resources (like images, fonts, and strings) on all platforms.
 
 ## Feature
 - Shared UI and logic for Android, iOS, Desktop and Web.
@@ -46,9 +46,4 @@ To run the application on an Android device/emulator just hit the run button.
 
 ### Desktop
 To run the desktop application write this to Android studio terminal: `./gradlew :composeApp:run`
-
-### Web
-To run the Web application write this to Android studio terminal: `./gradlew wasmJsBrowserRun -t`
-Once the application starts, open the following URL in your browser: `http://localhost:8081/`
-
 

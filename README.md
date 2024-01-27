@@ -7,6 +7,8 @@
   <img src="img/2.png">
 </p>
 
+## Credentials 
+Enter any Email and password to login within the app (It's just a fake login flow) 
 
 
 ## Libraries

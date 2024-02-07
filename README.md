@@ -20,7 +20,7 @@ Enter any Email and password to login within the app (It's just a fake login flo
 - [Coil3](https://coil-kt.github.io/coil/upgrading_to_coil3) for loading images.
 - [Voyager](https://voyager.adriel.cafe) for easily handling navigation on all platforms.
 - [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings) for saving key-value pairs.
-- [Moko resources](https://github.com/icerockdev/moko-resources) Access shared resources (like images, fonts, and strings) on all platforms.
+- [Resources in Compose Multiplatform](https://proandroiddev.com/how-to-use-resources-in-compose-multiplatform-77a6552b505d)
 
 ## Feature
 - Shared UI and logic for Android, iOS, Desktop and Web.

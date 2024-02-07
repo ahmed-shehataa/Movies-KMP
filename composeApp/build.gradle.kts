@@ -1,5 +1,4 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
-import dev.icerock.gradle.MRVisibility
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
@@ -9,7 +8,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.mokoResources)
     alias(libs.plugins.serialization)
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.sqlDelight)
@@ -32,6 +30,18 @@ sqldelight {
 }
 
 kotlin {
+    // Configure all compilations
+    targets.all {
+        compilations.all {
+            kotlinOptions {
+                freeCompilerArgs = freeCompilerArgs + listOf(
+                    "-opt-in=org.jetbrains.compose.resources.ExperimentalResourceApi",
+                )
+            }
+        }
+    }
+
+    // Configure android compilations
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -110,7 +120,6 @@ kotlin {
             implementation(libs.voyager.screenModel)
             implementation(libs.voyager.koin)
             implementation(libs.voyager.transitions)
-            implementation(libs.moko.resources)
             implementation(libs.ktor.core)
             implementation(libs.ktor.cio)
             implementation(libs.ktor.serialization)
@@ -172,13 +181,4 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
-}
-
-multiplatformResources {
-    multiplatformResourcesPackage = myNamespace // required
-    multiplatformResourcesClassName = "Resources" // optional, default MR
-    multiplatformResourcesVisibility = MRVisibility.Internal // optional, default Public
-    iosBaseLocalizationRegion = "en" // optional, default "en"
-    multiplatformResourcesSourceSet = "commonMain"  // optional, default "commonMain"
-    disableStaticFrameworkWarning = true
 }

@@ -12,9 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.shehata.movies_kmp.Resources
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import movies_kmp.composeapp.generated.resources.Res
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+
 
 
 @Composable
@@ -31,12 +34,12 @@ fun EmptyListPlaceholder(modifier: Modifier = Modifier) {
 
             Image(
                 modifier = Modifier.size(150.dp),
-                painter = painterResource(Resources.images.ic_empty),
+                painter = painterResource(Res.drawable.ic_empty),
                 contentDescription = null,
             )
 
             Text(
-                text = stringResource(Resources.strings.no_movies),
+                text = stringResource(Res.string.no_movies),
                 style = MaterialTheme.typography.body1.copy(
                     color = MaterialTheme.colors.primary
                 )

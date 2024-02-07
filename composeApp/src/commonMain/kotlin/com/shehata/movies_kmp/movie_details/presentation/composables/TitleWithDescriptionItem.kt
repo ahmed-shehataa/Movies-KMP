@@ -13,8 +13,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
+
 
 @Composable
 fun TitleWithDescriptionItem(

@@ -36,12 +36,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.util.validation.InputWrapper
 import com.shehata.movies_kmp.util.validation.ValidationType
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import movies_kmp.composeapp.generated.resources.Res
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -67,8 +67,8 @@ fun InputText(
         {
             if (inputWrapper.validationType == ValidationType.Password) {
                 val iconRes = if (isPasswordVisible)
-                    Resources.images.ic_eye_opened
-                else Resources.images.ic_eye_closed
+                    Res.drawable.ic_eye_opened
+                else Res.drawable.ic_eye_closed
 
                 IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
                     Icon(

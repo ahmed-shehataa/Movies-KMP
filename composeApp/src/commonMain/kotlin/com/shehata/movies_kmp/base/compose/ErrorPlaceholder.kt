@@ -14,9 +14,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.shehata.movies_kmp.Resources
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+
+
+import movies_kmp.composeapp.generated.resources.Res
+
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -31,12 +34,12 @@ fun ErrorPlaceholder(modifier: Modifier = Modifier, onRetry: () -> Unit) {
 
             Image(
                 modifier = Modifier.size(150.dp),
-                painter = painterResource(Resources.images.ic_error),
+                painter = painterResource(Res.drawable.ic_error),
                 contentDescription = null,
             )
 
             Text(
-                text = stringResource(Resources.strings.network_error),
+                text = stringResource(Res.string.network_error),
                 style = MaterialTheme.typography.body1.copy(
                     color = MaterialTheme.colors.primary
                 )
@@ -44,7 +47,7 @@ fun ErrorPlaceholder(modifier: Modifier = Modifier, onRetry: () -> Unit) {
 
             Button(onClick = onRetry, content = {
                 Text(
-                    text = stringResource(Resources.strings.retry),
+                    text = stringResource(Res.string.retry),
                     style = MaterialTheme.typography.body1.copy(
                         color = Color.White
                     )

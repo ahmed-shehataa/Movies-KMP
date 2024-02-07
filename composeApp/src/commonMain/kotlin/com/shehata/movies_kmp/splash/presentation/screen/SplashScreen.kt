@@ -8,13 +8,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.getScreenModel
-import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.base.screen.BaseScreen
 import com.shehata.movies_kmp.login.presentation.screen.LoginScreen
 import com.shehata.movies_kmp.movies.presentation.screen.MoviesScreen
 import com.shehata.movies_kmp.splash.presentation.contract.SplashAction
 import com.shehata.movies_kmp.splash.presentation.screenModel.SplashScreenModel
-import dev.icerock.moko.resources.compose.painterResource
+import movies_kmp.composeapp.generated.resources.Res
+
+import org.jetbrains.compose.resources.painterResource
 
 object SplashScreen : BaseScreen<Any, Any, SplashAction>(
     model = { getScreenModel<SplashScreenModel>() },
@@ -24,7 +25,7 @@ object SplashScreen : BaseScreen<Any, Any, SplashAction>(
                 modifier = Modifier
                     .size(250.dp)
                     .align(Alignment.Center),
-                painter = painterResource(Resources.images.splash),
+                painter = painterResource(Res.drawable.splash),
                 contentDescription = null
             )
         }

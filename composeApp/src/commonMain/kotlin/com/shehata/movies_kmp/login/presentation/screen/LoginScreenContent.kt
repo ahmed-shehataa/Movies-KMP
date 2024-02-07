@@ -29,13 +29,15 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.util.compose.InputText
 import com.shehata.movies_kmp.util.compose.LocalDimen
 import com.shehata.movies_kmp.util.compose.LocalWindowSize
 import com.shehata.movies_kmp.util.validation.InputWrapper
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import movies_kmp.composeapp.generated.resources.Res
+
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+
 
 @Composable
 fun LoginScreenContent(
@@ -79,12 +81,12 @@ fun LoginScreenContent(
                 modifier = Modifier
                     .size(250.dp)
                     .align(Alignment.CenterHorizontally),
-                painter = painterResource(Resources.images.login),
+                painter = painterResource(Res.drawable.login),
                 contentDescription = null
             )
 
             InputText(
-                hint = Resources.strings.enter_email,
+                hint = Res.string.enter_email,
                 inputWrapper = email,
                 keyboardType = KeyboardType.Email
             ) {
@@ -94,7 +96,7 @@ fun LoginScreenContent(
 
             InputText(
                 inputWrapper = password,
-                hint = Resources.strings.enter_password,
+                hint = Res.string.enter_password,
                 keyboardType = KeyboardType.Password,
                 imeAction = ImeAction.Done,
                 onDone = {
@@ -112,7 +114,7 @@ fun LoginScreenContent(
                     onLoginClicked()
                 },
                 content = {
-                    Text(text = stringResource(Resources.strings.login))
+                    Text(text = stringResource(Res.string.login))
                 },
                 enabled = isButtonEnabled,
                 shape = MaterialTheme.shapes.medium

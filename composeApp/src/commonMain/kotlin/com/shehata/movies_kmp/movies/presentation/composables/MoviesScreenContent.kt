@@ -9,11 +9,13 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
-import com.shehata.movies_kmp.Resources
+
 import com.shehata.movies_kmp.base.pagination.ComposePagingSource
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 import com.shehata.movies_kmp.util.compose.LocalDimen
-import dev.icerock.moko.resources.compose.stringResource
+import movies_kmp.composeapp.generated.resources.Res
+
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -29,7 +31,7 @@ fun MoviesScreenContent(
         topBar = {
             TopAppBar {
                 Text(
-                    text = stringResource(Resources.strings.movies),
+                    text = stringResource(Res.string.movies),
                     fontSize = 20.sp,
                     modifier = Modifier.padding(horizontal = LocalDimen.current.spaceXXLarge)
                 )

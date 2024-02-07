@@ -17,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import coil3.compose.AsyncImage
-import com.shehata.movies_kmp.Resources
 import com.shehata.movies_kmp.movies.presentation.composables.VoteBadge
 import com.shehata.movies_kmp.movies.presentation.model.MovieUIModel
 import com.shehata.movies_kmp.util.compose.LocalDimen
+import movies_kmp.composeapp.generated.resources.Res
 
 
 @Composable
@@ -54,7 +54,7 @@ fun MovieDetailsScreenContent(
             item {
                 movie.title?.let {
                     TitleWithDescriptionItem(
-                        titleRes = Resources.strings.name,
+                        titleRes = Res.string.name,
                         description = movie.title
                     )
                 }
@@ -65,7 +65,7 @@ fun MovieDetailsScreenContent(
             item {
                 movie.overview?.let {
                     TitleWithDescriptionItem(
-                        titleRes = Resources.strings.overview,
+                        titleRes = Res.string.overview,
                         description = movie.overview
                     )
                 }
@@ -76,7 +76,7 @@ fun MovieDetailsScreenContent(
             item {
                 movie.releaseDate?.let {
                     TitleWithDescriptionItem(
-                        titleRes = Resources.strings.releaseDate,
+                        titleRes = Res.string.release_date,
                         description = movie.releaseDate
                     )
                 }

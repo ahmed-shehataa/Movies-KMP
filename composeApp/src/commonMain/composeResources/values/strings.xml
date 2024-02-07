@@ -18,5 +18,5 @@
     <string name="no_movies">No movies found</string>
     <string name="name">Name</string>
     <string name="overview">Overview</string>
-    <string name="releaseDate">Released At</string>
+    <string name="release_date">Released At</string>
 </resources>
